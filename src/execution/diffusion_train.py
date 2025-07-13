@@ -28,7 +28,7 @@ def run_trainer():
 
     args = parser.parse_args()
     tr = DiffusionTrainer(proposed_dir=args.pre_dir, result_dir=args.rst_dir,
-                          dataset_id=args.D, task_name=args.task, denoiser=args.denoiser, steps=args.steps,
+                          dataset_id=args.D, task_name=args.T, denoiser=args.denoiser, steps=args.steps,
                           batch_size=args.batch, patch_size=eval(args.patch), devices=args.devices,
                           iters=args.iters, save_interval=args.sintr, loss_func=args.loss, go_on=args.c, loss_x0=args.x0)
     tr.run()
