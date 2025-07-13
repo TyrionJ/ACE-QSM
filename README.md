@@ -67,3 +67,6 @@ python diffusion_infer.py \
 -task_dir [join(ACE-QSM_results, task_name)] \
 -method [inversion_method|"iLSQR"] -device [cpu_or_gpu-index]
 ```
+
+### Details
+Reference to run_script.sh
