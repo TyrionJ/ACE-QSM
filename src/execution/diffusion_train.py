@@ -1,16 +1,10 @@
-import platform
 import argparse
 
 from scripts.diffusion_trainer import DiffusionTrainer
 
-if platform.system().lower() == 'windows':
-    pf = r'F:\Data\runtime\ACE-QSM\ACE-QSM_processed'
-    rf = r'F:\Data\runtime\ACE-QSM\ACE-QSM_results'
-    ds = 'cpu'
-else:
-    pf = '/remote-home/hejj/Data/runtime/ACE-QSM/ACE-QSM_processed'
-    rf = '/remote-home/hejj/Data/runtime/ACE-QSM/ACE-QSM_results'
-    ds = '1'
+pf = '../../data/ACE-QSM_processed'
+rf = '../../data/ACE-QSM_results'
+ds = '0'
 
 
 def run_trainer():
@@ -18,8 +12,8 @@ def run_trainer():
 
     parser.add_argument('-pre_dir', type=str, default=pf, help='processed folder')
     parser.add_argument('-rst_dir', type=str, default=rf, help='results folder')
-    parser.add_argument('-D', type=int, default=13, help='dataset ID')
-    parser.add_argument('-task', type=str, default='Task001_DWTDiffusion', help='Task name for the dataset')
+    parser.add_argument('-D', type=int, default=1, help='dataset ID')
+    parser.add_argument('-T', type=str, default='Task001_DWTDiffusion', help='Task name for the dataset')
     parser.add_argument('-denoiser', type=str, default='DWTDenoiserNet', help='denoiser model name')
     parser.add_argument('-steps', type=int, default=1000, help='sampling timestamps')
     parser.add_argument('-loss', type=str, default='L2', help='sampling timestamps')

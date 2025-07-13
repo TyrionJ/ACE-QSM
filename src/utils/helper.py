@@ -3,9 +3,14 @@ import numpy as np
 
 
 def say_hi(logger=print):
-    logger("\n#######################################################################\n"
-           "Please cite the following paper when using ACE-QSM:\n\n"
-           "#######################################################################\n")
+    logger("\n####################################################################\n"
+           "   Please cite the following paper when using ACE-QSM: \n"
+           "\n"
+           "   He J, Fu B, Wang B, et al. ACE-QSM: Accelerating \n"
+           "   quantitative susceptibility mapping acquisition using diffusion \n"
+           "   models by reducing repetition time[J]. Biomedical Signal \n"
+           "   Processing and Control, 2025, 110: 108217.\n"
+           "#####################################################################\n")
 
 
 def set_seed(seed=12345):

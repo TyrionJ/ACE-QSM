@@ -1,10 +1,10 @@
 # preprocess
-python execution/preprocess.py -D 13
+python preprocess.py -D 1
 
 
 # train dwt_diffusion
 # iLSQR
-python execution/diffusion_train.py -D 11 -task Task001_DWTDiffusion -denoiser DWTDenoiserNet -sintr 5000 -iters 600000 -devices 2 --c
+python execution/diffusion_train.py -D 1 -T Task001_DWTDiffusion -denoiser DWTDenoiserNet -sintr 5000 -iters 600000 -devices 0 --c
 # QSMnet
 python execution/diffusion_train.py -D 12 -task Task001_DWTDiffusion -denoiser DWTDenoiserNet -sintr 5000 -iters 600000 -devices 3 --c
 # msQSM
