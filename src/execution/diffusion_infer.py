@@ -21,13 +21,10 @@ def fetch_sTE_QSM(sub_dir, method):
     @return: input data and Nifti-data affine
     """
 
-    out_dir = join(sub_dir, 'ACE_no-DAC_nii', 'ACE-QSM_out')
-    # out_dir = join(sub_dir, 'QSM_nii', 'ACE-QSM_out')
+    out_dir = join(sub_dir, 'ACE_no-PAT', 'ACE-QSM_out')
     os.makedirs(out_dir, exist_ok=True)
 
-    med_dir = 'STISuite_out' if method == 'iLSQR' else 'SEPIA_out' if method == 'STAR-QSM' else f'{method}_out'
-    echo_files = [join(dirname(out_dir), med_dir, f'{method}_e-{i}.nii.gz', ) for i in [1, 2, 3]]
-
+    echo_files = [join(dirname(out_dir), method, f'{method}_e-{i}.nii.gz', ) for i in [1, 2, 3]]
     input_niis = [nb.load(echo_file) for echo_file in echo_files]
     input_data = [input_nii.get_fdata() for input_nii in input_niis]
     input_data = np.array(input_data, dtype=np.float32)
@@ -56,7 +53,7 @@ def main(args):
     subs = [i for i in os.listdir(args.data_dir) if args.sub_name == 'ALL' or i in args.sub_name.split(',')]
     subs = sorted(subs, reverse=args.reverse)
     for N, sub in enumerate(subs):
-        print(f"[{N+1}/{len(subs)}] Sampling {sub}...")
+        print(f"[{N+1}/{len(subs)}] Sampling [{sub}]...")
 
         sub_dir = join(args.data_dir, sub)
         input_data, affine, out_dir = fetch_sTE_QSM(sub_dir, args.method)

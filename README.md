@@ -30,16 +30,40 @@ pip install -r requirements.txt
 
 ### Preprocess
 ```python
-python preprocess.py -r [ACE-QSM_raw folder] -p [ACE-QSM_processed folder] -D [dataset_ID]
+python preprocess.py \
+    -r [ACE-QSM_raw folder] \
+    -p [ACE-QSM_processed folder] \
+    -D [dataset_ID]
 ```
 
 ### Train
+
 Train diffusion model
 ```python
-python diffusion_train.py -p [ACE-QSM_processed folder] -r [ACE-QSM_results folder] -D [dataset_ID] -T [task_name] -f [fold|0] -denoiser [diffusion_net|DWTDenoiserNet] -sintr [save_interval|5000] -iters [iteration|600000] -devices [cpu_or_gpu-index] --c
-```
-Train normal U-Net
-```python
-python normal_train.py -p [ACE-QSM_processed folder] -r [ACE-QSM_results folder] -D [dataset_ID] -T [task_name] -N BaseUNet -b [batch_size] -d [cpu_or_gpu-index] -e [epochs|200] --c
+python diffusion_train.py \
+    -p [ACE-QSM_processed folder] \
+    -r [ACE-QSM_results folder] \
+    -D [dataset_ID] -T [task_name] \
+    -denoiser [diffusion_net|DWTDenoiserNet] \
+    -sintr [save_interval|5000] \
+    -iters [iteration|600000] \
+    -devices [cpu_or_gpu-index] \
+    -f [fold|0] --c
 ```
 
+Train normal U-Net
+```python
+python normal_train.py \
+    -p [ACE-QSM_processed folder] \
+    -r [ACE-QSM_results folder] \
+    -D [dataset_ID] -T [task_name] -N BaseUNet \
+    -b [batch_size] -d [cpu_or_gpu-index] -e [epochs|200] --c
+```
+
+### Infer
+```python
+python diffusion_infer.py \
+-data_dir [imput_dir|"../../data/Infer_samples"] \
+-task_dir [join(ACE-QSM_results, task_name)] \
+-method [inversion_method|"iLSQR"] -device [cpu_or_gpu-index]
+```

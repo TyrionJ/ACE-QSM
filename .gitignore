@@ -1,3 +1,6 @@
 .idea
 *.pt
+*.nii.gz
+*.pkl
+*.json
 __pycache__

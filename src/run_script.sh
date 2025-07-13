@@ -83,3 +83,8 @@ python execution/diffusion_infer.py \
 -data_dir "/remote-home/hejj/Data/Researches/MRI/ACE-QSM-data/GE 750w" \
 -task_dir "/remote-home/hejj/Data/runtime/ACE-QSM/ACE-QSM_results/Dataset011_iLSQR_e-3/Task001_DWTDiffusion" \
 -sub_name "ALL" -method "iLSQR" -device 1
+
+python diffusion_infer.py \
+-data_dir "../../data/Infer_samples" \
+-task_dir "../../data//ACE-QSM_results/Dataset001_iLSQR/Task001_DWTDiffusion" \
+-sub_name "ALL" -method "iLSQR" -device 1
